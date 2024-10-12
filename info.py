@@ -1,6 +1,15 @@
 import socket
 import requests
+import signal
+import sys
 import intro
+
+def signal_handler(sig, frame):
+    print('\nExiting...')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 
 def get_ip_info(ip_or_domain):
     try:
